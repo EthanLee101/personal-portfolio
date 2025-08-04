@@ -67,7 +67,7 @@ const Portfolio = () => {
       { name: 'TensorFlow', proficiency: 'Intermediate' },
       { name: 'Matplotlib', proficiency: 'Advanced' },
       { name: 'Pandas', proficiency: 'Advanced' },
-      { name: 'Prisma', proficiency: 'Advanced' },
+      { name: 'Scikit-Learn', proficiency: 'Intermediate' },
       { name: 'Selenium', proficiency: 'Intermediate' }
     ]
   };
@@ -81,7 +81,7 @@ const Portfolio = () => {
       tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "OpenAI", "Pinecone"],
       github: "https://github.com/EthanLee101/journal-buddy",
       demo: null,
-      image: "/api/placeholder/400/250",
+      image: "/journal-buddy-image.png",
       type: "Web App",
       status: "In Development",
       highlights: ["2000+ users", "60% engagement increase", "99.9% uptime"]
@@ -103,9 +103,9 @@ const Portfolio = () => {
       title: "Automated Pet Feeder Web App",
       description: "IoT solution combining web app with Arduino hardware for remote pet feeding control with real-time updates.",
       tech: ["C++", "Firebase", "React", "JavaScript", "Express", "Arduino"],
-      github: "https://github.com/EthanLee101/pet-feeder",
+      github: "https://github.com/EthanLee101/pet-feeder-project",
       demo: null,
-      image: "/api/placeholder/400/250",
+      image: "/pet-feeder.jpg",
       type: "IoT Project",
       status: "Completed",
       highlights: ["REST APIs", "SSL-encrypted Wi-Fi", "Hardware integration"]
@@ -141,7 +141,7 @@ const Portfolio = () => {
       tech: ["C++", "Custom Graphics", "OOP", "Game Architecture"],
       github: "https://github.com/EthanLee101/marble-madness",
       demo: null,
-      image: "/api/placeholder/400/250",
+      image: "/marble-madness-image.png",
       type: "Game",
       status: "Completed",
       highlights: ["Custom level system", "10 enemy types", "20% code reduction"]
@@ -244,7 +244,7 @@ const Portfolio = () => {
                   My Background
                 </p>
                 <p className="text- text-gray-400 mb-10">
-                  I'm a current junior at UCLA studying Computer Science with an interest in full-stack development,
+                  I'm currently a junior at UCLA studying Computer Science with an interest in full-stack development,
                   software engineering, and machine learning/AI. I’m passionate about creating impactful, robust software
                   that solves real-world problems. Some of my hobbies include volleyball, dance, video games, and eating.
                   Feel free to contact me through email or connect with me on LinkedIn!
