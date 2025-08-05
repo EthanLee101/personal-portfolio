@@ -8,6 +8,7 @@ const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [showFunFacts, setShowFunFacts] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   // Fun facts that appear on hover
   const funFacts = [
@@ -17,6 +18,17 @@ const Portfolio = () => {
     "🍜 Food explorer",
     "🎨 Creative problem solver"
   ];
+
+  // Track screen size for mobile detection
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Track mouse position for gradient effect - optimized to prevent modal interference
   useEffect(() => {
@@ -279,7 +291,7 @@ const Portfolio = () => {
   };
 
   // Modal Component - Memoized to prevent unnecessary re-renders
-const ProjectModal = React.memo(({ project, onClose }) => {
+const ProjectModal = React.memo(({ project, onClose, isMobile }) => {
   // Memoize the modal content to prevent unnecessary recalculations
   const modalContent = React.useMemo(() => {
     if (!project || !project.modalContent) return null;
@@ -395,43 +407,71 @@ const ProjectModal = React.memo(({ project, onClose }) => {
                 {/* Content area - Fills remaining space without scrolling */}
                 <div className="flex-1 bg-black overflow-hidden relative">
                   
-                  {/* Persistent iframe with key prop to prevent flickering */}
-                  <iframe
-                    key={`iframe-${modalContent.title}-${modalContent.embedUrl}`}
-                    src={modalContent.embedUrl}
-                    className="absolute inset-0 w-full h-full"
-                    title={`${modalContent.title} Content`}
-                    allow="autoplay; encrypted-media; fullscreen"
-                    allowFullScreen
-                    loading="lazy"
-                    style={{ 
-                      border: 'none',
-                      display: 'block',
-                      margin: 0,
-                      padding: 0,
-                      pointerEvents: 'auto'
-                    }}
-                  />
-
-                  {modalContent.contentType === 'docs' && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-800 p-4 overflow-hidden">
-                      <div className="prose prose-invert max-w-none h-full overflow-y-auto">
-                        <h3 className="text-white mb-3">Project Overview</h3>
-                        <p className="text-gray-300 mb-3 text-sm">{modalContent.description}</p>
-                        <h3 className="text-white mb-3">Technical Implementation</h3>
-                        <p className="text-gray-300 text-sm">
-                          View the complete technical documentation and implementation details on GitHub.
-                        </p>
-                        <a
-                          href={modalContent.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text hover:from-blue-300 hover:to-purple-400 mt-3 inline-block text-sm"
-                        >
-                          View Full Documentation →
-                        </a>
+                  {isMobile ? (
+                    /* Mobile: Show link button instead of iframe */
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 p-6 flex flex-col items-center justify-center text-center">
+                      <div className="p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full w-20 h-20 mb-4 flex items-center justify-center">
+                        {modalContent.contentType === 'demo' && <Play size={40} className="text-white" />}
+                        {(modalContent.contentType === 'slides' || modalContent.contentType === 'docs') && <FileText size={40} className="text-white" />}
                       </div>
+                      <p className="text-gray-300 mb-6 text-sm">
+                        {modalContent.contentType === 'demo' && 'Watch the full demo video'}
+                        {modalContent.contentType === 'slides' && 'View the project presentation'}
+                        {modalContent.contentType === 'docs' && 'View the technical documentation'}
+                      </p>
+                      <a
+                        href={modalContent.embedUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-montserrat font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg text-sm"
+                      >
+                        <ExternalLink size={16} className="mr-2" />
+                        {modalContent.contentType === 'demo' && 'Watch Video'}
+                        {modalContent.contentType === 'slides' && 'View Slides'}
+                        {modalContent.contentType === 'docs' && 'View Docs'}
+                      </a>
                     </div>
+                  ) : (
+                    /* Desktop: Show iframe as before */
+                    <>
+                      <iframe
+                        key={`iframe-${modalContent.title}-${modalContent.embedUrl}`}
+                        src={modalContent.embedUrl}
+                        className="absolute inset-0 w-full h-full"
+                        title={`${modalContent.title} Content`}
+                        allow="autoplay; encrypted-media; fullscreen"
+                        allowFullScreen
+                        loading="lazy"
+                        style={{ 
+                          border: 'none',
+                          display: 'block',
+                          margin: 0,
+                          padding: 0,
+                          pointerEvents: 'auto'
+                        }}
+                      />
+
+                      {modalContent.contentType === 'docs' && (
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-800 p-4 overflow-hidden">
+                          <div className="prose prose-invert max-w-none h-full overflow-y-auto">
+                            <h3 className="text-white mb-3">Project Overview</h3>
+                            <p className="text-gray-300 mb-3 text-sm">{modalContent.description}</p>
+                            <h3 className="text-white mb-3">Technical Implementation</h3>
+                            <p className="text-gray-300 text-sm">
+                              View the complete technical documentation and implementation details on GitHub.
+                            </p>
+                            <a
+                              href={modalContent.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text hover:from-blue-300 hover:to-purple-400 mt-3 inline-block text-sm"
+                            >
+                              View Full Documentation →
+                            </a>
+                          </div>
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
@@ -450,7 +490,8 @@ const ProjectModal = React.memo(({ project, onClose }) => {
   return (
     prevProps.project.id === nextProps.project.id &&
     prevProps.project.modalContent?.embedUrl === nextProps.project.modalContent?.embedUrl &&
-    prevProps.project.title === nextProps.project.title
+    prevProps.project.title === nextProps.project.title &&
+    prevProps.isMobile === nextProps.isMobile
   );
 });
   return (
@@ -976,7 +1017,8 @@ const ProjectModal = React.memo(({ project, onClose }) => {
         <ProjectModal 
           key={selectedProject.id} 
           project={selectedProject} 
-          onClose={handleModalClose} 
+          onClose={handleModalClose}
+          isMobile={isMobile}
         />
       )}
 
