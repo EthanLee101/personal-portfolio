@@ -219,9 +219,9 @@ const Portfolio = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Profile Image */}
-            <div className="flex justify-center lg:justify-start order-2 lg:order-1">
+              <div className="flex justify-center lg:justify-start order-2 lg:order-1">
               <div className="relative">
-                <div className="w-80 h-80 sm:w-96 sm:h-96 rounded-full overflow-hidden border-4 border-blue-400 shadow-2xl">
+                <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-blue-400 shadow-2xl">
                   <img
                     src="/profile-image.jpg" // Replace with your actual image filename
                     alt="Ethan Lee"
@@ -229,38 +229,38 @@ const Portfolio = () => {
                   />
                 </div>
                 {/* Decorative elements */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-400 rounded-full animate-pulse"></div>
-                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-300 rounded-full animate-pulse delay-1000"></div>
+                <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-blue-400 rounded-full animate-pulse"></div>
+                <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-4 h-4 sm:w-6 sm:h-6 bg-blue-300 rounded-full animate-pulse delay-1000"></div>
               </div>
             </div>
-
+            {/* Text Content */}
             {/* Text Content */}
             <div className="text-center lg:text-left order-1 lg:order-2">
-              <div className="mb-8">
-                <h3 className="text-4xl sm:text-4xl lg:text-5xl font-montserrat font-bold mb-6">
+              <div className="mb-6 sm:mb-8">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-montserrat font-bold mb-4 sm:mb-6">
                   Hello! I'm <span className="text-blue-400">Ethan Lee</span>
                 </h3>
-                <p className="text-2xl sm:text-2xl text-gray-300 mb-8">
+                <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-4 sm:mb-8">
                   My Background
                 </p>
-                <p className="text- text-gray-400 mb-10">
+                <p className="text-sm sm:text-base text-gray-400 mb-6 sm:mb-10 leading-relaxed">
                   I'm currently a junior at UCLA studying Computer Science with an interest in full-stack development,
-                  software engineering, and machine learning/AI. I’m passionate about creating impactful, robust software
+                  software engineering, and machine learning/AI. I'm passionate about creating impactful, robust software
                   that solves real-world problems. Some of my hobbies include volleyball, dance, video games, and eating.
                   Feel free to contact me through email or connect with me on LinkedIn!
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 sm:mb-12">
                 <button
                   onClick={() => scrollToSection('projects')}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-montserrat font-medium transition-colors duration-200"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-montserrat font-medium transition-colors duration-200 text-sm sm:text-base"
                 >
                   View My Work
                 </button>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900 px-8 py-3 rounded-lg font-montserrat font-medium transition-all duration-200"
+                  className="border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900 px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-montserrat font-medium transition-all duration-200 text-sm sm:text-base"
                 >
                   Get In Touch
                 </button>
@@ -268,16 +268,16 @@ const Portfolio = () => {
 
               <div className="flex justify-center lg:justify-start space-x-6">
                 <a href="https://github.com/EthanLee101" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
-                  <Github size={24} />
+                  <Github size={20} className="sm:w-6 sm:h-6" />
                 </a>
                 <a href="https://www.linkedin.com/in/ethan-p-lee/" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
-                  <Linkedin size={24} />
+                  <Linkedin size={20} className="sm:w-6 sm:h-6" />
                 </a>
                 <button
                   onClick={() => scrollToSection('contact')}
                   className="text-gray-400 hover:text-blue-400 transition-colors duration-200"
                 >
-                  <Mail size={24} />
+                  <Mail size={20} className="sm:w-6 sm:h-6" />
                 </button>
               </div>
             </div>
