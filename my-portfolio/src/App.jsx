@@ -395,85 +395,79 @@ const ProjectModal = React.memo(({ project, onClose, isMobile }) => {
                 
                 {/* Header for content type - Fixed at top */}
                 <div className="flex items-center justify-between p-3 border-b border-gray-700 flex-shrink-0">
-                  <h3 className="text-sm font-montserrat text-gray-400">
-                    {modalContent.contentType === 'demo' && 'Live Demo Preview'}
-                    {modalContent.contentType === 'slides' && 'Project Presentation'}
-                    {modalContent.contentType === 'docs' && 'Technical Documentation'}
-                  </h3>
-                  {modalContent.contentType === 'demo' && <Play className="text-purple-400" size={16} />}
-                  {(modalContent.contentType === 'slides' || modalContent.contentType === 'docs') && <FileText className="text-purple-400" size={16} />}
-                </div>
-
-                {/* Content area - Fills remaining space without scrolling */}
-                <div className="flex-1 bg-black overflow-hidden relative">
-                  
                   {isMobile ? (
-                    /* Mobile: Show link button instead of iframe */
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 p-6 flex flex-col items-center justify-center text-center">
-                      <div className="p-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full w-20 h-20 mb-4 flex items-center justify-center">
-                        {modalContent.contentType === 'demo' && <Play size={40} className="text-white" />}
-                        {(modalContent.contentType === 'slides' || modalContent.contentType === 'docs') && <FileText size={40} className="text-white" />}
+                    <a
+                      href={modalContent.embedUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between w-full text-sm font-montserrat text-gray-400 hover:text-blue-400 transition-colors cursor-pointer group"
+                    >
+                      <span>
+                        {modalContent.contentType === 'demo' && 'Live Demo Preview'}
+                        {modalContent.contentType === 'slides' && 'Project Presentation'}
+                        {modalContent.contentType === 'docs' && 'Technical Documentation'}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <ExternalLink className="text-purple-400 group-hover:text-blue-400 transition-colors" size={14} />
+                        {modalContent.contentType === 'demo' && <Play className="text-purple-400 group-hover:text-blue-400 transition-colors" size={16} />}
+                        {(modalContent.contentType === 'slides' || modalContent.contentType === 'docs') && <FileText className="text-purple-400 group-hover:text-blue-400 transition-colors" size={16} />}
                       </div>
-                      <p className="text-gray-300 mb-6 text-sm">
-                        {modalContent.contentType === 'demo' && 'Watch the full demo video'}
-                        {modalContent.contentType === 'slides' && 'View the project presentation'}
-                        {modalContent.contentType === 'docs' && 'View the technical documentation'}
-                      </p>
-                      <a
-                        href={modalContent.embedUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-montserrat font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg text-sm"
-                      >
-                        <ExternalLink size={16} className="mr-2" />
-                        {modalContent.contentType === 'demo' && 'Watch Video'}
-                        {modalContent.contentType === 'slides' && 'View Slides'}
-                        {modalContent.contentType === 'docs' && 'View Docs'}
-                      </a>
-                    </div>
+                    </a>
                   ) : (
-                    /* Desktop: Show iframe as before */
                     <>
-                      <iframe
-                        key={`iframe-${modalContent.title}-${modalContent.embedUrl}`}
-                        src={modalContent.embedUrl}
-                        className="absolute inset-0 w-full h-full"
-                        title={`${modalContent.title} Content`}
-                        allow="autoplay; encrypted-media; fullscreen"
-                        allowFullScreen
-                        loading="lazy"
-                        style={{ 
-                          border: 'none',
-                          display: 'block',
-                          margin: 0,
-                          padding: 0,
-                          pointerEvents: 'auto'
-                        }}
-                      />
-
-                      {modalContent.contentType === 'docs' && (
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-800 p-4 overflow-hidden">
-                          <div className="prose prose-invert max-w-none h-full overflow-y-auto">
-                            <h3 className="text-white mb-3">Project Overview</h3>
-                            <p className="text-gray-300 mb-3 text-sm">{modalContent.description}</p>
-                            <h3 className="text-white mb-3">Technical Implementation</h3>
-                            <p className="text-gray-300 text-sm">
-                              View the complete technical documentation and implementation details on GitHub.
-                            </p>
-                            <a
-                              href={modalContent.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text hover:from-blue-300 hover:to-purple-400 mt-3 inline-block text-sm"
-                            >
-                              View Full Documentation →
-                            </a>
-                          </div>
-                        </div>
-                      )}
+                      <h3 className="text-sm font-montserrat text-gray-400">
+                        {modalContent.contentType === 'demo' && 'Live Demo Preview'}
+                        {modalContent.contentType === 'slides' && 'Project Presentation'}
+                        {modalContent.contentType === 'docs' && 'Technical Documentation'}
+                      </h3>
+                      {modalContent.contentType === 'demo' && <Play className="text-purple-400" size={16} />}
+                      {(modalContent.contentType === 'slides' || modalContent.contentType === 'docs') && <FileText className="text-purple-400" size={16} />}
                     </>
                   )}
                 </div>
+
+                {/* Content area - Fills remaining space without scrolling */}
+                {!isMobile && (
+                  <div className="flex-1 bg-black overflow-hidden relative">
+                    <iframe
+                      key={`iframe-${modalContent.title}-${modalContent.embedUrl}`}
+                      src={modalContent.embedUrl}
+                      className="absolute inset-0 w-full h-full"
+                      title={`${modalContent.title} Content`}
+                      allow="autoplay; encrypted-media; fullscreen"
+                      allowFullScreen
+                      loading="lazy"
+                      style={{ 
+                        border: 'none',
+                        display: 'block',
+                        margin: 0,
+                        padding: 0,
+                        pointerEvents: 'auto'
+                      }}
+                    />
+
+                    {modalContent.contentType === 'docs' && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-800 p-4 overflow-hidden">
+                        <div className="prose prose-invert max-w-none h-full overflow-y-auto">
+                          <h3 className="text-white mb-3">Project Overview</h3>
+                          <p className="text-gray-300 mb-3 text-sm">{modalContent.description}</p>
+                          <h3 className="text-white mb-3">Technical Implementation</h3>
+                          <p className="text-gray-300 text-sm">
+                            View the complete technical documentation and implementation details on GitHub.
+                          </p>
+                          <a
+                            href={modalContent.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text hover:from-blue-300 hover:to-purple-400 mt-3 inline-block text-sm"
+                          >
+                            View Full Documentation →
+                          </a>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>
