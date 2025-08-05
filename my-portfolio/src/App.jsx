@@ -215,11 +215,11 @@ const Portfolio = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 scroll-mt-24">
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 md:pt-0 scroll-mt-24">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Profile Image */}
-              <div className="flex justify-center lg:justify-start order-2 lg:order-1">
+            <div className="flex justify-center lg:justify-start order-2 lg:order-1">
               <div className="relative">
                 <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-blue-400 shadow-2xl">
                   <img
@@ -233,7 +233,7 @@ const Portfolio = () => {
                 <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-4 h-4 sm:w-6 sm:h-6 bg-blue-300 rounded-full animate-pulse delay-1000"></div>
               </div>
             </div>
-            {/* Text Content */}
+
             {/* Text Content */}
             <div className="text-center lg:text-left order-1 lg:order-2">
               <div className="mb-6 sm:mb-8">
