@@ -60,7 +60,8 @@ const Portfolio = () => {
       { name: 'Google Cloud Platform', proficiency: 'Intermediate' },
       { name: 'VS Code', proficiency: 'Advanced' },
       { name: 'Vercel', proficiency: 'Advanced' },
-      { name: 'Linux', proficiency: 'Intermediate' }
+      { name: 'Linux', proficiency: 'Intermediate' },
+      {name: 'CI/CD' , proficiency: 'Intermediate'}
     ],
     libraries: [
       { name: 'PyTorch', proficiency: 'Advanced' },
@@ -78,13 +79,13 @@ const Portfolio = () => {
       id: 1,
       title: "Journal Buddy",
       description: "Full-stack journaling platform with AI-powered insights, supporting 300+ users with vector search capabilities.",
-      tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "OpenAI", "Pinecone"],
+      tech: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "OpenAI", "Pinecone"],
       github: "https://github.com/EthanLee101/journal-buddy",
       demo: null,
       image: "/journal-buddy-image.png",
       type: "Web App",
       status: "In Development",
-      highlights: ["2000+ users", "60% engagement increase", "99.9% uptime"]
+      highlights: ["300+ users", "60% engagement increase", "99.9% uptime"]
     },
     {
       id: 2,
@@ -96,7 +97,7 @@ const Portfolio = () => {
       image: "/bruin-learn-image.png",
       type: "Web App",
       status: "Completed",
-      highlights: ["2000+ users", "Course optimization", "Google OAuth integration"]
+      highlights: ["500+ users", "Course optimization", "Google OAuth integration"]
     },
     {
       id: 3,
