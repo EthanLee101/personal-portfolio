@@ -229,7 +229,7 @@ const Portfolio = () => {
       tech: ["Unity", "C#", "Git", "GitHub"],
       github: "https://github.com/sidalok1/Frogs-Game",
       demo: "https://eciujeye.itch.io/frogs-go-nuclear",
-      image: "game-image.png",
+      image: "/game-image.png",
       type: "Game",
       status: "Published",
       highlights: ["Team leadership", "50+ commits", "Interactive elements"],
