@@ -632,7 +632,7 @@ const ProjectModal = React.memo(({ project, onClose, isMobile }) => {
                 </p>
                 <p className="text-sm sm:text-base text-gray-400 mb-4 leading-relaxed">
                   I'm currently a junior at UCLA studying Computer Science with an interest in full-stack development,
-                  software engineering, and machine learning/AI. I'm passionate about creating impactful, robust software
+                  software engineering, and AI/ML. I'm passionate about creating impactful, robust software
                   that solves real-world problems.
                 </p>
                 <p className="text-sm sm:text-base text-gray-400 mb-6 sm:mb-10 leading-relaxed">
