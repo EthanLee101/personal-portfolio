@@ -1,6 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-montserrat: "Montserrat", sans-serif; 
+  --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", sans-serif;
+  --font-label: "Space Mono", ui-monospace, monospace;
+
+  --color-blueprint-bg: #0d1b2e;
+  --color-blueprint-line: #e8f1f8;
+  --color-blueprint-accent: #ff6b35;
+  --color-blueprint-muted: #5f7a94;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-blueprint-bg);
+}
+
+.bp-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--color-blueprint-line) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-blueprint-line) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to right, color-mix(in srgb, var(--color-blueprint-line) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-blueprint-line) 14%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+}
+
+.bp-vignette {
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -10%, color-mix(in srgb, var(--color-blueprint-line) 10%, transparent), transparent 60%),
+    radial-gradient(ellipse 90% 70% at 50% 110%, color-mix(in srgb, black 55%, var(--color-blueprint-bg)), transparent 65%);
+}
+
+.bp-hairline {
+  border-color: color-mix(in srgb, var(--color-blueprint-line) 18%, transparent);
+}
+
+::selection {
+  background: var(--color-blueprint-accent);
+  color: var(--color-blueprint-bg);
 }
