@@ -1,6 +1,12 @@
 import React from 'react';
 import { Github, ExternalLink, X, Play, FileText } from 'lucide-react';
 import ReflectoryDiagram from './ReflectoryDiagram';
+import PrimerDiagram from './PrimerDiagram';
+
+const DIAGRAMS = {
+  Reflectory: ReflectoryDiagram,
+  'The Primer': PrimerDiagram,
+};
 
 const ProjectModal = React.memo(({ project, onClose, isMobile }) => {
   const modalContent = React.useMemo(() => {
@@ -132,7 +138,10 @@ const ProjectModal = React.memo(({ project, onClose, isMobile }) => {
 
                 {isDiagram ? (
                   <div className="flex-1 flex items-center justify-center p-6 sm:p-10 bg-blueprint-bg">
-                    <ReflectoryDiagram className="max-w-2xl" />
+                    {(() => {
+                      const Diagram = DIAGRAMS[modalContent.title] || ReflectoryDiagram;
+                      return <Diagram className="max-w-2xl" />;
+                    })()}
                   </div>
                 ) : (
                   !isMobile && (

@@ -2,9 +2,15 @@ import { Github, ExternalLink, Eye } from 'lucide-react';
 import { Reveal, RevealItem } from './Reveal';
 import SectionHeading from './SectionHeading';
 import ReflectoryDiagram from './ReflectoryDiagram';
+import PrimerDiagram from './PrimerDiagram';
 import { projects } from '../data/content';
 
 const demoLabel = (url) => (url.includes('devpost.com') ? 'Devpost' : 'Live');
+
+const DIAGRAMS = {
+  Reflectory: ReflectoryDiagram,
+  'The Primer': PrimerDiagram,
+};
 
 export default function Projects({ isMobile, onSelectProject }) {
   const techLimit = isMobile ? 2 : 3;
@@ -21,8 +27,11 @@ export default function Projects({ isMobile, onSelectProject }) {
               className="border bp-hairline hover:border-blueprint-accent/60 transition-all duration-300 h-fit"
             >
               <div className="h-32 sm:h-40 bg-blueprint-bg flex items-center justify-center overflow-hidden border-b bp-hairline p-2">
-                {project.visualType === 'diagram' ? (
-                  <ReflectoryDiagram />
+                {project.visualType === 'diagram' && DIAGRAMS[project.title] ? (
+                  (() => {
+                    const Diagram = DIAGRAMS[project.title];
+                    return <Diagram />;
+                  })()
                 ) : project.image ? (
                   <img
                     src={project.image}

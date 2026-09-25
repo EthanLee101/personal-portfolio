@@ -31,7 +31,7 @@ export const about = {
   ],
   stats: [
     { value: '300+', label: 'Active Users' },
-    { value: '6', label: 'Major Projects' },
+    { value: '7', label: 'Major Projects' },
     { value: '3+', label: 'Years Coding' },
   ],
   focus: [
@@ -50,10 +50,10 @@ export const experience = [
     role: 'Software Engineer Intern',
     dates: 'Jun 2026 – Aug 2026',
     bullets: [
-      'Developed a full-stack cost anomaly alerting system in Go and Angular/NgRx, requested by 10+ engineers.',
+      'Enabled 8 beta teams to configure custom spend-threshold alerts routed via email/Slack instead of manual checks.',
+      'Cut cost-anomaly detection time from 2 days to under 1 hour during an 8-team beta pilot.',
       'Automated cost anomaly detection with EventBridge and CloudWatch, replacing 5 hrs/week of manual monitoring.',
-      'Built a serverless Go REST API on AWS Lambda, serving cost metrics from PostgreSQL on AWS RDS.',
-      'Designed an Angular/TypeScript dashboard for configuring alerts across cloud services for any internal team.',
+      'Built a serverless Go REST API on AWS Lambda with an Angular/TypeScript dashboard for cross-service alerts.',
     ],
   },
 ];
@@ -67,6 +67,7 @@ export const projects = [
     tech: ['Next.js 16', 'TypeScript', 'React 19', 'Supabase', 'pgvector', 'Gemini API', 'Tailwind CSS v4', 'Vitest'],
     stats: 'MVP live on Vercel · 112 tests passing (14 files) · solo project',
     visualType: 'diagram',
+    github: 'https://github.com/EthanLee101/reflectory-app',
     demo: 'https://reflectory-app-sooty.vercel.app/',
     category: 'Full-Stack',
     modalContent: {
@@ -82,12 +83,48 @@ export const projects = [
     },
   },
   {
+    id: 7,
+    title: 'The Primer',
+    description:
+      "An adaptive arithmetic tutor for kids that tracks real per-skill mastery with Bayesian Knowledge Tracing — not a fixed problem sequence or a chatbot wrapper.",
+    tech: ['React', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'Gemini API', 'Argon2id', 'JWT'],
+    stats: 'Live on Vercel + Render · deterministic grading, adaptive difficulty · solo project',
+    visualType: 'diagram',
+    github: 'https://github.com/EthanLee101/the-primer',
+    demo: 'https://the-primer-mu.vercel.app/',
+    category: 'Full-Stack',
+    modalContent: {
+      type: 'diagram',
+      description:
+        "Each (child, skill) pair tracks a probability of mastery (p_know), updated via a Bayesian posterior on every attempt. Unlike textbook BKT, a forgetting parameter is modeled alongside learning, so mastery isn't sticky — and served difficulty is separately rate-limited to move at most one level per attempt so it never feels jarring.",
+      features: [
+        'Adaptive BKT engine with an added forgetting parameter — vanilla BKT saturates p_know at 1.0 and stops responding to wrong answers',
+        'Grading is fully deterministic against server-persisted operands; Gemini is used only for wrong-answer explanations, decoupled from assessment',
+        'Argon2id password hashing and JWT bearer auth (not cookies, to sidestep cross-origin CSRF) with a PIN-unlock path held to the same rate-limiting standard',
+        'Per-IP rate limiting on every unauthenticated endpoint and opaque UUID lookups instead of enumerable sequential IDs',
+        'PostgreSQL access optimized with targeted indexes and eager loading, eliminating an N+1 query bottleneck',
+      ],
+    },
+  },
+  {
+    id: 3,
+    title: 'TrialFlowAI',
+    description:
+      "An AI-powered platform that cuts clinical trial setup time from weeks to days, using a burden-scoring algorithm to flag at-risk patients.",
+    tech: ['React 19', 'TypeScript', 'Node.js', 'Express.js', 'Composio MCP', 'Google APIs', 'OpenAI'],
+    stats: 'Runner-up, CalHacks 12.0 · 600+ teams',
+    image: '/trial-flow.png',
+    github: 'https://github.com/cloyooni/calhacks_project',
+    demo: 'https://devpost.com/software/trialflow',
+    category: 'Full-Stack',
+  },
+  {
     id: 2,
     title: 'Bruin Plan',
     description:
       'Schedule optimization tool for UCLA students with conflict detection',
     tech: ['React', 'Node.js', 'MongoDB', 'OAuth 2.0'],
-    stats: '500+ users, 99.2% uptime, <500ms API response',
+    stats: '6-person team · 15,000+ course combinations processed · Google OAuth 2.0',
     image: '/bruin-learn-image.png',
     github: 'https://github.com/kouseph/BruinPlan',
     category: 'Full-Stack',
@@ -105,18 +142,6 @@ export const projects = [
         'Responsive design tested across 15+ device types',
       ],
     },
-  },
-  {
-    id: 3,
-    title: 'TrialFlowAI',
-    description:
-      "An AI-powered platform that cuts clinical trial setup time from weeks to days, using a burden-scoring algorithm to flag at-risk patients.",
-    tech: ['React 19', 'TypeScript', 'Node.js', 'Express.js', 'Composio MCP', 'Google APIs', 'OpenAI'],
-    stats: 'Runner-up, CalHacks 12.0 · 600+ teams',
-    image: '/trial-flow.png',
-    github: 'https://github.com/cloyooni/calhacks_project',
-    demo: 'https://devpost.com/software/trialflow',
-    category: 'Full-Stack',
   },
   {
     id: 4,
@@ -148,7 +173,7 @@ export const projects = [
     title: 'Frogs Go Nuclear',
     description: '2D platformer game with team leadership and custom physics',
     tech: ['Unity', 'C#', 'Git', 'Game Design'],
-    stats: '4.7★ rating, 2K+ downloads, team lead',
+    stats: '4-person team · 70+ GitHub commits · published on itch.io',
     image: '/game-image.png',
     github: 'https://github.com/sidalok1/Frogs-Game',
     demo: 'https://eciujeye.itch.io/frogs-go-nuclear',
@@ -198,22 +223,22 @@ export const skills = [
   {
     category: 'Languages',
     icon: 'Code',
-    items: ['TypeScript', 'JavaScript', 'Python', 'C++/C#', 'HTML/CSS', 'SQL'],
+    items: ['TypeScript', 'JavaScript', 'Go', 'Python', 'C++/C#', 'HTML/CSS', 'SQL'],
   },
   {
     category: 'Frontend',
     icon: 'Monitor',
-    items: ['React', 'Next.js', 'Tailwind CSS', 'Unity', 'Responsive Design'],
+    items: ['React', 'Next.js', 'Angular', 'Tailwind CSS', 'Unity', 'Responsive Design'],
   },
   {
     category: 'Backend',
     icon: 'Server',
-    items: ['Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'Firebase', 'REST APIs'],
+    items: ['Node.js', 'Express.js', 'FastAPI', 'MongoDB', 'PostgreSQL', 'Firebase', 'REST APIs'],
   },
   {
     category: 'AI/ML & Tools',
     icon: 'Brain',
-    items: ['PyTorch', 'TensorFlow', 'Git', 'Docker', 'AWS/GCP', 'Jest'],
+    items: ['Gemini API', 'PyTorch', 'TensorFlow', 'Git', 'Docker', 'AWS/GCP', 'Jest'],
   },
 ];
 
