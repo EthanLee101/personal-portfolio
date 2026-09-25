@@ -50,7 +50,7 @@ export const experience = [
     dates: 'Jun 2026 – Aug 2026',
     bullets: [
       'Architected a 3-tier serverless Go API on AWS Lambda adhering to OpenAPI 3.0, paired with an Angular dashboard.',
-      'Secured REST endpoints using Bearer Token auth to extract user identity server-side and prevent data leaks.',
+      'Wrote Go unit tests, configured a Jenkins CI pipeline, and monitored deployments via CloudWatch queries.',
       'Streamlined alert evaluation with EventBridge and CloudWatch, eliminating 5 hrs/week of manual cost auditing.',
       "Integrated the alerting feature into Capital One's cloud platform (5+ engineer adopters); presented to the Cloud org.",
     ],
