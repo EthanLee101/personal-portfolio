@@ -30,7 +30,6 @@ export const about = {
     "When I'm not coding, you'll find me playing volleyball, exploring new restaurants, or working on side projects that push my technical boundaries.",
   ],
   stats: [
-    { value: '300+', label: 'Active Users' },
     { value: '7', label: 'Major Projects' },
     { value: '3+', label: 'Years Coding' },
   ],
@@ -50,10 +49,10 @@ export const experience = [
     role: 'Software Engineer Intern',
     dates: 'Jun 2026 – Aug 2026',
     bullets: [
-      'Enabled 8 beta teams to configure custom spend-threshold alerts routed via email/Slack instead of manual checks.',
-      'Cut cost-anomaly detection time from 2 days to under 1 hour during an 8-team beta pilot.',
-      'Automated cost anomaly detection with EventBridge and CloudWatch, replacing 5 hrs/week of manual monitoring.',
-      'Built a serverless Go REST API on AWS Lambda with an Angular/TypeScript dashboard for cross-service alerts.',
+      'Architected a 3-tier serverless Go API on AWS Lambda adhering to OpenAPI 3.0, paired with an Angular dashboard.',
+      'Secured REST endpoints using Bearer Token auth to extract user identity server-side and prevent data leaks.',
+      'Streamlined alert evaluation with EventBridge and CloudWatch, eliminating 5 hrs/week of manual cost auditing.',
+      "Integrated the alerting feature into Capital One's cloud platform (5+ engineer adopters); presented to the Cloud org.",
     ],
   },
 ];
@@ -103,6 +102,7 @@ export const projects = [
         'Argon2id password hashing and JWT bearer auth (not cookies, to sidestep cross-origin CSRF) with a PIN-unlock path held to the same rate-limiting standard',
         'Per-IP rate limiting on every unauthenticated endpoint and opaque UUID lookups instead of enumerable sequential IDs',
         'PostgreSQL access optimized with targeted indexes and eager loading, eliminating an N+1 query bottleneck',
+        'React frontend with a JWT-authenticated parent dashboard tracking per-skill mastery and session history',
       ],
     },
   },
@@ -110,8 +110,8 @@ export const projects = [
     id: 3,
     title: 'TrialFlowAI',
     description:
-      "An AI-powered platform that cuts clinical trial setup time from weeks to days, using a burden-scoring algorithm to flag at-risk patients.",
-    tech: ['React 19', 'TypeScript', 'Node.js', 'Express.js', 'Composio MCP', 'Google APIs', 'OpenAI'],
+      "An AI-powered platform tackling clinical trials' ~40% dropout rate, using a Creao-built Burden Score API to quantify participant workload.",
+    tech: ['React 19', 'TypeScript', 'Node.js', 'Express.js', 'Creao', 'Composio MCP', 'Google APIs'],
     stats: 'Runner-up, CalHacks 12.0 · 600+ teams',
     image: '/trial-flow.png',
     github: 'https://github.com/cloyooni/calhacks_project',
@@ -135,11 +135,10 @@ export const projects = [
       description:
         'A comprehensive schedule planning tool designed specifically for UCLA students.',
       features: [
-        'Algorithm-based conflict detection with 99.1% accuracy',
-        'RESTful API design with comprehensive error handling',
-        'MongoDB indexing optimization for 3x faster queries',
-        'Implemented JWT authentication with refresh tokens',
-        'Responsive design tested across 15+ device types',
+        'Architected a MERN stack app processing 15,000+ course combinations to optimize student schedules',
+        'Built a UCLA course-catalog scraper enabling students to sort schedules by proximity or time of day',
+        'Integrated Google OAuth 2.0 authentication, improving signup-to-login conversion from 55% to 80%',
+        'Developed a dynamic programming algorithm reducing average schedule conflicts from 3.1 per user to 2.0',
       ],
     },
   },

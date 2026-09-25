@@ -20,7 +20,7 @@ export default function About() {
               ))}
             </Reveal>
 
-            <Reveal as="div" className="grid grid-cols-3 gap-3 sm:gap-6 px-4 sm:px-0">
+            <Reveal as="div" className="grid grid-cols-2 gap-3 sm:gap-6 px-4 sm:px-0">
               {about.stats.map((stat) => (
                 <RevealItem
                   key={stat.label}
